@@ -16,7 +16,7 @@ class ProductAnalyzer:
     def most_sold_product(self):
         pipeline = [
             {"$unwind": "$produtos"},
-            {"$group": {"_id": "$produtos.nome", "total_vendido": {"$sum": "$produtos.quantidade"}}},
+            {"$group": {"_id": "$produtos.descricao", "total_vendido": {"$sum": "$produtos.quantidade"}}},
             {"$sort": {"total_vendido": -1}},
             {"$limit": 1}
         ]
@@ -35,6 +35,6 @@ class ProductAnalyzer:
         pipeline = [
             {"$unwind": "$produtos"},
             {"$match": {"produtos.quantidade": {"$gt": quantity}}},
-            {"$group": {"_id": "$produtos.nome", "total_vendido": {"$sum": "$produtos.quantidade"}}}
+            {"$group": {"_id": "$produtos.descricao", "total_vendido": {"$sum": "$produtos.quantidade"}}}
         ]
         return list(self.collection.aggregate(pipeline))
