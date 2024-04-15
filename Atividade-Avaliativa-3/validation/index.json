@@ -1,0 +1,45 @@
+{
+  "_id": {
+    "type": "objectId",
+    "description": "Identificador único do motorista."
+  },
+  "nota": {
+    "type": "int",
+    "description": "Nota do motorista."
+  },
+  "corridas": {
+    "type": "array",
+    "description": "Lista de corridas realizadas pelo motorista.",
+    "items": {
+      "type": "object",
+      "properties": {
+        "nota": {
+          "type": "int",
+          "description": "Nota da corrida."
+        },
+        "distancia": {
+          "type": "number",
+          "description": "Distância percorrida na corrida."
+        },
+        "valor": {
+          "type": "number",
+          "description": "Valor da corrida."
+        },
+        "passageiro": {
+          "type": "object",
+          "description": "Informações do passageiro.",
+          "properties": {
+            "nome": {
+              "type": "string",
+              "description": "Nome do passageiro."
+            },
+            "documento": {
+              "type": "string",
+              "description": "Documento de identificação do passageiro."
+            }
+          }
+        }
+      }
+    }
+  }
+}
